@@ -53,9 +53,9 @@
       <textarea v-model="formData.text" placeholder="Введите текст"></textarea>
     </div>
     <div class="loadDoc">
-      <h5>Загрузка документы</h5>
+      <h5>Загрузка документов</h5>
       <div class="loadDocDescription">
-        <p>Приложите, пожалуйста, полноэкрнанный скриншот.</p>
+        <p>Приложите, пожалуйста, полноэкранный скриншот.</p>
         <p>Это поможет быстрее решить проблему</p>
       </div>
       <input type="file" />
@@ -200,7 +200,7 @@ h5 {
 }
 
 .textDescription {
-  margin-top: 20px;
+  margin-top: 30px;
   textarea {
     margin-top: 15px;
     width: 100%;

@@ -12,13 +12,16 @@
           {{ city.title }}
         </option>
       </select>
-      <label
-        ><input
-          type="checkbox"
-          v-model="formData.online"
-          @change="formData.city = null"
-        />Онлайн
-      </label>
+      <div class="online">
+        <label>
+          <input
+            type="checkbox"
+            v-model="formData.online"
+            @change="formData.city = null"
+          />
+          <span class="onlineCheckbox"></span>Онлайн
+        </label>
+      </div>
     </div>
     <div class="messageTheme">
       <h5>Тема обращения <span class="required">*</span></h5>
@@ -33,7 +36,7 @@
           v-model="formData.theme"
           :value="messageTheme.id"
           @change="formData.otherTheme = null"
-        />{{ messageTheme.theme }}
+        /><span class="choosedRadio"></span>{{ messageTheme.theme }}
       </label>
       <div>
         <input
@@ -119,13 +122,70 @@ h5 {
   }
 }
 
+.online {
+  margin-top: 15px;
+  font-size: 14px;
+  color: rgb(94, 93, 93);
+
+  input[type='checkbox'] {
+    display: none;
+  }
+  .onlineCheckbox {
+    border: 1px solid black;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    content: '';
+    position: relative;
+    margin-right: 7px;
+    vertical-align: middle;
+  }
+
+  input[type='checkbox']:checked + .onlineCheckbox::before {
+    content: 'V';
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+    transform: translate(50%, 25%);
+  }
+}
+
 .messageTheme {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
 
   .theme {
-    margin-top: 5px;
+    margin-top: 10px;
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  .choosedRadio {
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    content: '';
+    position: relative;
+    margin-right: 7px;
+    vertical-align: middle;
+  }
+
+  input[type='radio']:checked + .choosedRadio::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    background-color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
   }
 
   .otherTheme {

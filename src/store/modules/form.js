@@ -1,3 +1,5 @@
+import router from '../../router';
+
 export default {
   actions: {
     async fetchCities({ commit }) {
@@ -26,8 +28,14 @@ export default {
           }
         );
         const data = await response.json();
-        commit();
-        console.log(data);
+        console.log(data.success);
+        if (data.success) {
+          commit('resetForm');
+          router.push('/successform');
+          //this.$router.push('/successform');
+        } else {
+          alert('Ошибка отправки заявки');
+        }
       } catch (error) {
         //throw error;
       }
@@ -42,14 +50,33 @@ export default {
       { id: 3, theme: 'Не приходит письмо активации на почту' },
       { id: 4, theme: 'Не работает личный кабинет' },
     ],
+    formData: {
+      online: false,
+      city: null,
+      theme: null,
+      otherTheme: null,
+      text: null,
+      messageFile: null,
+    },
   },
   mutations: {
     setCities(state, cities) {
       state.cities = cities;
     },
+    resetForm(state) {
+      state.formData = {
+        online: false,
+        city: null,
+        theme: null,
+        otherTheme: null,
+        text: null,
+        messageFile: null,
+      };
+    },
   },
   getters: {
     cities: (s) => s.cities,
     messageThemes: (s) => s.messageThemes,
+    formData: (s) => s.formData,
   },
 };

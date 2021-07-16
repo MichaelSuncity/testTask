@@ -52,7 +52,7 @@
     <div>
       <h5>Загрузка документы</h5>
       <p>Приложите, пожалуйста, полноэкрнанный скриншот.</p>
-      <p>Это поможет быстрре решить проблему</p>
+      <p>Это поможет быстрее решить проблему</p>
       <input type="file" />
     </div>
     <div>
@@ -66,20 +66,8 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Form',
-  data() {
-    return {
-      formData: {
-        online: false,
-        city: null,
-        theme: null,
-        otherTheme: null,
-        text: null,
-        messageFile: null,
-      },
-    };
-  },
   computed: {
-    ...mapGetters(['cities', 'messageThemes']),
+    ...mapGetters(['cities', 'messageThemes', 'formData']),
     checkForm() {
       return (this.formData.online || this.formData.city) &&
         (this.formData.theme || this.formData.otherTheme) &&

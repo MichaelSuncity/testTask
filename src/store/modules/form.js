@@ -28,11 +28,9 @@ export default {
           }
         );
         const data = await response.json();
-        console.log(data.success);
         if (data.success) {
           commit('resetForm');
           router.push('/successform');
-          //this.$router.push('/successform');
         } else {
           alert('Ошибка отправки заявки');
         }
